@@ -4,6 +4,7 @@
   "description": "React Awesome Typewriter with maximum customizations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/divyaswormakai/react-awesome-typewriter",
   "files": [
     "dist"
   ],

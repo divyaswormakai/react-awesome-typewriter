@@ -1,8 +1,6 @@
 import React from "react";
 import "./index.css";
 
-let isBackspacing = false;
-
 export interface IReactAwesomeTypewriterText {
   text: string;
   classNames?: string;
@@ -35,6 +33,7 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
   const [activeIndex, setActiveIndex] = React.useState<number>(-1);
   const [totalTextLength, setTotalTextLength] = React.useState<number>(0);
   const [textSpans, setTextSpans] = React.useState<string[]>([]);
+  const [isBackspacing, setIsBackspacing] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const style = document.createElement("style");
@@ -80,7 +79,7 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
   const calculateWritingText = async () => {
     if (textSpans.length > 0) {
       if (textSpans.length >= totalTextLength) {
-        isBackspacing = true;
+        setIsBackspacing(true);
         setTimeout(() => {
           startDeleting();
         }, waitTime);
@@ -94,7 +93,7 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
       }
     }
     if (isBackspacing && textSpans.length <= 0) {
-      isBackspacing = false;
+      setIsBackspacing(false);
 
       setActiveIndex((previous) =>
         options.length === 1 ? -1 : (previous + 1) % allOptions.length
