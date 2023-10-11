@@ -1,15 +1,17 @@
 {
   "name": "react-awesome-typewriter",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "React Awesome Typewriter with maximum customizations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/divyaswormakai/react-awesome-typewriter",
+  "homepage": "https://divyaswormakai.github.io/react-awesome-typewriter-demo",
   "files": [
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "rm -rf ./dist && tsc && npm publish"
   },
   "author": "Divyaswor Makai Shrestha",
   "license": "ISC",

@@ -1,11 +1,10 @@
 import React from "react";
-import "./index.css";
-let isBackspacing = false;
 const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, backwardSpeed = 25, cursorColor = "#FFF", cursorHeight = "2.25rem", cursorWidth = "3px", cursorGap = "10px", cursorAnimationDuration = 700, }) => {
     const [allOptions] = React.useState(options);
     const [activeIndex, setActiveIndex] = React.useState(-1);
     const [totalTextLength, setTotalTextLength] = React.useState(0);
     const [textSpans, setTextSpans] = React.useState([]);
+    const [isBackspacing, setIsBackspacing] = React.useState(false);
     React.useEffect(() => {
         const style = document.createElement("style");
         style.innerHTML = `
@@ -45,7 +44,7 @@ const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, b
     const calculateWritingText = async () => {
         if (textSpans.length > 0) {
             if (textSpans.length >= totalTextLength) {
-                isBackspacing = true;
+                setIsBackspacing(true);
                 setTimeout(() => {
                     startDeleting();
                 }, waitTime);
@@ -59,8 +58,8 @@ const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, b
             }
         }
         if (isBackspacing && textSpans.length <= 0) {
-            isBackspacing = false;
-            setActiveIndex((previous) => (previous + 1) % allOptions.length);
+            setIsBackspacing(false);
+            setActiveIndex((previous) => options.length === 1 ? -1 : (previous + 1) % allOptions.length);
         }
     };
     const startWriting = () => {

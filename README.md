@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-<img src="./demo.gif" />
+<img src="https://raw.githubusercontent.com/divyaswormakai/react-awesome-typewriter/main/demo.gif?token=GHSAT0AAAAAACDE7L4JIY53723J7VL332YIZJGKKIA" />
 </p>
 
 <p>
-React Awesome Typewriter is a simple component that allows maximum customization on the "typewriter" effect to an array of text that you might need. You can use your own custom classes to provide the type of styling to your text. <a href="#" target="_blank">Try the Demo</a>
+React Awesome Typewriter is a simple component that allows maximum customization on the "typewriter" effect to an array of text that you might need. You can use your own custom classes to provide the type of styling to your text. <a href="https://divyaswormakai.github.io/react-awesome-typewriter-demo" target="_blank">Try the Demo</a>
 </p>
 
 ## Installation
@@ -33,6 +33,29 @@ yarn add react-ts-typewriter
 ## Example usage
 
 ```css
+/* Primary styles reuired for blinking cursor */
+.react-awesome-typewriter::after {
+  content: "";
+  display: inline-block;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .text-secondary {
   color: #535bf2;
 }
