@@ -1,5 +1,6 @@
 import React from "react";
-const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, backwardSpeed = 25, cursorColor = "#FFF", cursorHeight = "2.25rem", cursorWidth = "3px", cursorGap = "10px", cursorAnimationDuration = 700, }) => {
+import "./index.css";
+const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, backwardSpeed = 25, cursorColor = "#FFF", cursorHeight = "2.25rem", cursorWidth = "3px", cursorGap = "10px", cursorAnimationDuration = 700, typeWriterId = `react-awesome-typewriter-${Date.now()}`, }) => {
     const [allOptions] = React.useState(options);
     const [activeIndex, setActiveIndex] = React.useState(-1);
     const [totalTextLength, setTotalTextLength] = React.useState(0);
@@ -8,12 +9,16 @@ const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, b
     React.useEffect(() => {
         const style = document.createElement("style");
         style.innerHTML = `
-      .react-awesome-typewriter::after{
+      #${typeWriterId}::after{
         background-color: ${cursorColor};
         height: ${cursorHeight};
         width: ${cursorWidth};
         margin-left: ${cursorGap};
         animation-duration: ${cursorAnimationDuration}ms;
+        content: "";
+        display: inline-block;
+        animation-name: blink;
+        animation-iteration-count: infinite;
       }
     `;
         document.head.appendChild(style);
@@ -93,7 +98,7 @@ const ReactAwesomeTypewriter = ({ options, forwardSpeed = 60, waitTime = 4000, b
             });
         }, backwardSpeed);
     };
-    return (React.createElement("span", { className: "react-awesome-typewriter mb-4 min-h-[110px] flex-wrap text-3xl font-bold sm:min-h-[150px] md:min-h-[120px] md:w-2/3 md:text-5xl md:leading-[3.75rem]", dangerouslySetInnerHTML: {
+    return (React.createElement("span", { className: "react-awesome-typewriter mb-4 min-h-[110px] flex-wrap text-3xl font-bold sm:min-h-[150px] md:min-h-[120px] md:w-2/3 md:text-5xl md:leading-[3.75rem]", id: typeWriterId, dangerouslySetInnerHTML: {
             __html: textSpans?.length > 0 ? textSpans.join("") : "",
         } }));
 };

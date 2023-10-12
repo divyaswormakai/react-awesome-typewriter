@@ -1,4 +1,4 @@
-<h1 align="center"> 〰 ⌨️ 〰 React Typewriter 〰 ⌨️ 〰</h1>
+<h1 align="center">React Typewriter</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/language-typescript-blue?style=flat-square&logo=typescript" /> 
 <img src="https://img.shields.io/badge/react-v18.2-%2361DBFB?style=flat-square&logo=react" />
@@ -33,29 +33,7 @@ yarn add react-ts-typewriter
 ## Example usage
 
 ```css
-/* Primary styles reuired for blinking cursor */
-.react-awesome-typewriter::after {
-  content: "";
-  display: inline-block;
-  animation-name: blink;
-  animation-iteration-count: infinite;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  49% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
+/* Custom Classes for demo purposes only */
 .text-secondary {
   color: #535bf2;
 }
@@ -173,6 +151,18 @@ export default function Main() {
          <td>false</td>
          <td>700</td>
       </tr>
-      
+       <tr>
+         <td>typeWriterId</td>
+         <td>string</td>
+         <td>Unique Identifider for typewriter</td>
+         <td>false</td>
+         <td>random string</td>
+      </tr>
    </tbody>
 </table>
+
+## FAQ
+
+### 1. Changing property of one react-awesome-typewriter changes properties for all
+
+You can simply make use of multiple typeWriterId for multiple instances of react-awesome-typewriter component to effectively solve this.

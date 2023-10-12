@@ -10,8 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "rm -rf ./dist && tsc && npm publish"
+    "pre-publish": "rm -rf ./dist && tsc && cp index.css dist/",
+    "publish": "npm publish"
   },
   "author": "Divyaswor Makai Shrestha",
   "license": "ISC",

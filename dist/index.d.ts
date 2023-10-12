@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 export interface IReactAwesomeTypewriterText {
     text: string;
     classNames?: string;
@@ -13,6 +14,7 @@ export interface IReactAwesomeTypewriter {
     cursorWidth?: string;
     cursorGap?: string;
     cursorAnimationDuration?: number;
+    typeWriterId?: string;
 }
 declare const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter>;
 export default ReactAwesomeTypewriter;

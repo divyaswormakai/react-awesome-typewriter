@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 export interface IReactAwesomeTypewriterText {
   text: string;
@@ -15,6 +16,7 @@ export interface IReactAwesomeTypewriter {
   cursorWidth?: string;
   cursorGap?: string;
   cursorAnimationDuration?: number;
+  typeWriterId?: string;
 }
 
 const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
@@ -27,6 +29,7 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
   cursorWidth = "3px",
   cursorGap = "10px",
   cursorAnimationDuration = 700,
+  typeWriterId = `react-awesome-typewriter-${Date.now()}`,
 }) => {
   const [allOptions] = React.useState(options);
   const [activeIndex, setActiveIndex] = React.useState<number>(-1);
@@ -37,14 +40,19 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
   React.useEffect(() => {
     const style = document.createElement("style");
     style.innerHTML = `
-      .react-awesome-typewriter::after{
+      #${typeWriterId}::after{
         background-color: ${cursorColor};
         height: ${cursorHeight};
         width: ${cursorWidth};
         margin-left: ${cursorGap};
         animation-duration: ${cursorAnimationDuration}ms;
+        content: "";
+        display: inline-block;
+        animation-name: blink;
+        animation-iteration-count: infinite;
       }
     `;
+
     document.head.appendChild(style);
   }, [
     cursorColor,
@@ -140,6 +148,7 @@ const ReactAwesomeTypewriter: React.FC<IReactAwesomeTypewriter> = ({
   return (
     <span
       className="react-awesome-typewriter mb-4 min-h-[110px] flex-wrap text-3xl font-bold sm:min-h-[150px] md:min-h-[120px] md:w-2/3 md:text-5xl md:leading-[3.75rem]"
+      id={typeWriterId}
       dangerouslySetInnerHTML={{
         __html: textSpans?.length > 0 ? textSpans.join("") : "",
       }}
